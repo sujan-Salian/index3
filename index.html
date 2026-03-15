@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Our Love Story ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:black;
+overflow:hidden;
+color:white;
+text-align:center;
+}
+
+/* STAR GALAXY BACKGROUND */
+
+body::before{
+content:"";
+position:absolute;
+width:200%;
+height:200%;
+background:radial-gradient(white 1px, transparent 1px);
+background-size:50px 50px;
+animation:stars 120s linear infinite;
+opacity:0.4;
+}
+
+@keyframes stars{
+0%{transform:translate(0,0);}
+100%{transform:translate(-600px,-600px);}
+}
+
+/* INTRO */
+
+#intro{
+position:fixed;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:100;
+}
+
+#intro h1{
+font-size:70px;
+color:#ff4da6;
+text-shadow:0 0 40px pink;
+animation:heartbeat 1.3s infinite;
+}
+
+@keyframes heartbeat{
+0%{transform:scale(1);}
+50%{transform:scale(1.25);}
+100%{transform:scale(1);}
+}
+
+#intro button{
+margin-top:40px;
+padding:18px 45px;
+font-size:22px;
+border:none;
+border-radius:40px;
+background:#ff4da6;
+color:white;
+cursor:pointer;
+box-shadow:0 0 30px #ff4da6;
+}
+
+/* MAIN CONTAINER */
+
+.container{
+margin-top:80px;
+position:relative;
+z-index:10;
+}
+
+#timer{
+font-size:26px;
+margin-bottom:20px;
+}
+
+/* PHOTO SLIDER */
+
+.slideshow img{
+width:460px;
+height:300px;
+border-radius:20px;
+object-fit:cover;
+box-shadow:0 0 40px pink;
+}
+
+/* BUTTON */
+
+button{
+margin-top:1px;
+padding:18px 40px;
+border:none;
+border-radius:40px;
+font-size:15px;
+background:#ff4da6;
+color:white;
+cursor:pointer;
+box-shadow:0 0 30px #ff4da6;
+}
+
+/* LOVE LETTER POPUP */
+
+#letter{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:flex;
+justify-content:center;
+align-items:center;
+visibility:hidden;
+}
+
+.letterBox{
+background:white;
+color:#ff4da6;
+padding:40px;
+border-radius:20px;
+max-width:420px;
+font-size:22px;
+}
+
+/* PROPOSAL */
+
+#proposal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+visibility:hidden;
+}
+
+#proposal h1{
+font-size:60px;
+color:#ff4da6;
+text-shadow:0 0 40px pink;
+}
+
+/* FLOATING HEARTS */
+
+.heart{
+position:absolute;
+bottom:-10px;
+font-size:20px;
+color:#ff4da6;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-100vh);}
+}
+
+/* ROSES */
+
+.rose{
+position:absolute;
+top:-10px;
+font-size:20px;
+animation:fall 8s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(0);}
+100%{transform:translateY(100vh);}
+}
+
+/* FIREWORKS */
+
+.firework{
+position:absolute;
+width:6px;
+height:6px;
+background:white;
+border-radius:50%;
+animation:explode 1s forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(1);}
+100%{transform:scale(30);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="intro">
+<h1>Our Love Story🧿</h1>
+<button onclick="startStory()">Start Our Journey</button>
+</div>
+
+<div class="container">
+
+<h2 id="timer"></h2>
+
+<div class="slideshow">
+<img id="slide" src="C:\\Users\\salia\\OneDrive\\Desktop\\6th month\\WhatsApp Image 2026-03-15 at 12.51.32 PM.jpeg" alt="image">
+</div>
+
+<button onclick="openLetter()">Open My Heart 💌</button>
+
+
+
+</div>
+
+<div id="letter">
+<div class="letterBox">
+
+My Love ❤️
+
+
+These 6 months with you have been the most beautiful chapter of my life 🥹.
+
+Every moment with you is magic.
+
+You are my happiness, my peace, and my forever.
+
+I Love You babee❤️🧿
+
+<br><br>
+
+<button onclick="showProposal()">Continue</button>
+
+</div>
+</div>
+
+<div id="proposal">
+
+<h1>Will You Stay Forever With Me? 💍</h1>
+
+<button onclick="celebrate()">YES ❤️</button>
+
+</div>
+
+<audio autoplay loop>
+<source src="https://www2.cs.uic.edu/~i101/SoundFiles/CanonInD.mp3">
+</audio>
+
+<script>
+
+/* INTRO */
+
+function startStory(){
+document.getElementById("intro").style.display="none";
+}
+
+/* LOVE TIMER */
+
+const startDate=new Date("2025-09-16" );
+
+function updateTimer(){
+const now=new Date();
+const diff=now-startDate;
+const days=Math.floor(diff/(1000*60*60*24));
+
+document.getElementById("timer").innerHTML="Together for ❤️ "+days+" days";
+}
+
+setInterval(updateTimer,1000);
+
+/* PHOTO SLIDER */
+
+const images=["🧿"]
+let i=0;
+
+setInterval(()=>{
+i++;
+if(i>=images.length)i=0;
+document.getElementById("slide").src=images[i];
+},3000);
+
+/* HEARTS */
+
+function createHeart(){
+const h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+}
+
+setInterval(createHeart,300);
+
+/* ROSES */
+
+function createRose(){
+const r=document.createElement("div");
+r.className="rose";
+r.innerHTML="🌹";
+r.style.left=Math.random()*100+"vw";
+document.body.appendChild(r);
+setTimeout(()=>r.remove(),8000);
+}
+
+setInterval(createRose,800);
+
+/* LETTER */
+
+function openLetter(){
+document.getElementById("letter").style.visibility="visible";
+fireworks();
+}
+
+function showProposal(){
+document.getElementById("letter").style.visibility="hidden";
+document.getElementById("proposal").style.visibility="visible";
+}
+
+/* FIREWORKS */
+
+function fireworks(){
+for(let i=0;i<30;i++){
+const f=document.createElement("div");
+f.className="firework";
+f.style.left=Math.random()*100+"vw";
+f.style.top=Math.random()*100+"vh";
+document.body.appendChild(f);
+setTimeout(()=>f.remove(),1000);
+}
+}
+
+function celebrate(){
+fireworks();
+alert("Forever Together ❤️");
+}
+
+</script>
+
+</body>
+</html>
+
+
